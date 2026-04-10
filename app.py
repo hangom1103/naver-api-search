@@ -1,4 +1,13 @@
 import streamlit as st  # 스트림릿 라이브러리 임포트
+import sys  # 시스템 모듈 임포트
+import os  # 운영체제 모듈 임포트
+from pathlib import Path  # 경로 처리 모듈 임포트
+
+# [배포 에러 해결] 현재 파일의 위치를 파이썬 모듈 검색 경로에 추가합니다.
+current_dir = str(Path(__file__).parent.absolute()) # 현재 파일이 위치한 절대 경로 추출
+if current_dir not in sys.path: # 경로가 sys.path에 없는 경우
+    sys.path.insert(0, current_dir) # 경로 리스트의 가장 앞에 추가하여 우선 순위 부여
+
 import pandas as pd  # 판다스 라이브러리 임포트
 import plotly.express as px  # 플로틀리 익스프레스 임포트
 import plotly.graph_objects as go  # 플로틀리 그래프 객체 임포트
